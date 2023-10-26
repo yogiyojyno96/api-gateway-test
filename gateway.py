@@ -21,3 +21,13 @@ class GatewayService:
     def get_service3(self, request, path):
         response = requests.get(f"{Service3_URL}/{path}")
         return Response(response.content, response.status_code, response.headers.items())
+    
+    @http('GET', '/service4')
+    def get_service4(self, request):
+        response = requests.get(f"{Service1_URL}")
+        print(response)
+        response = requests.get(f"{Service2_URL}")
+        print(response)
+        response = requests.get(f"{Service3_URL}")
+        print(response)
+        return Response(response.content, response.status_code, response.headers.items())
