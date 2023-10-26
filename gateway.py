@@ -1,6 +1,6 @@
 from nameko.web.handlers import http
 import requests
-
+from werkzeug.wrappers import Response
 
 Service1_URL = "http://127.0.0.1:8001"
 Service2_URL = "http://127.0.0.1:8002"
@@ -17,6 +17,7 @@ class GatewayService:
     def get_service2(self, request):
         return requests.get(Service2_URL).json()
 
-    @http('GET', '/service3')
-    def get_service3(self, request):
-        return requests.get(Service3_URL).json()
+    @http('GET', '/service3/<path:path>')
+    def get_service3(self, request, path):
+        response = requests.get(f"{Service3_URL}/{path}")
+        return Response(response.content, response.status_code, response.headers.items())
