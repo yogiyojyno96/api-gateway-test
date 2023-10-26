@@ -3,13 +3,13 @@
 all:run_nameko run_a run_b run_c
 
 run_nameko:
-	@poetry run uvicorn service_a.main:app1 --port 8001
+	@poetry run nameko run gateway
 
 run_a:
 	@poetry run uvicorn service_a.main:app1 --port 8001
 
 run_b:
-	@poetry run uvicorn service_a.main:app2 --port 8002
+	@poetry run uvicorn service_b.main:app2 --port 8002
 
 run_c:
-	@poetry run uvicorn service_a.main:app3 --port 8003
+	@poetry run uvicorn service_c.main:app3 --port 8003

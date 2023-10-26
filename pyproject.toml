@@ -8,9 +8,9 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.9"
 fastapi = "^0.104.0"
-nameko = "^2.14.1"
+nameko = "2.14.0"
 uvicorn = "^0.23.2"
-
+eventlet = "0.27.0"
 
 [build-system]
 requires = ["poetry-core"]
